@@ -1,0 +1,13 @@
+[Unit]
+Description=Hub de Crédito Web Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/hub_credito_site
+Environment="PATH=/home/ubuntu/hub_credito_site/venv/bin"
+ExecStart=/home/ubuntu/hub_credito_site/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 wsgi:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
